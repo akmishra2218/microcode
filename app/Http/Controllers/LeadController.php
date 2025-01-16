@@ -13,7 +13,9 @@ class LeadController extends Controller
      */
     public function index()
     {
-        $leads = Lead::paginate(10);
+        // $leads = Lead::paginate(10);
+        // $leads = Lead::onlyTrashed()->get();
+        $leads = Lead::withTrashed()->get();
         // dd($leads);
         return view('leads.index', compact('leads'));
     }
@@ -39,13 +41,7 @@ class LeadController extends Controller
         ]);
     
         Lead::create($request->all());
-
-        // ActivityLog::create([
-        //     'action' => 'Lead Created',
-        //     'user_id' => auth()->id(),
-        //     'description' => "Lead {$lead->name} was created.",
-        // ]);
-    
+           
         return redirect()->route('leads.index')->with('success', 'Lead created successfully.');
     }
 
@@ -79,12 +75,7 @@ class LeadController extends Controller
     
         $lead->update($request->all());
 
-        // ActivityLog::create([
-        //     'action' => 'Lead Created',
-        //     'user_id' => auth()->id(),
-        //     'description' => "Lead {$lead->name} was created.",
-        // ]);
-    
+           
         return redirect()->route('leads.index')->with('success', 'Lead updated successfully.');
     
     }
@@ -96,12 +87,7 @@ class LeadController extends Controller
     {
         $lead->delete();
 
-        // ActivityLog::create([
-        //     'action' => 'Lead Created',
-        //     'user_id' => auth()->id(),
-        //     'description' => "Lead {$lead->name} was created.",
-        // ]);
-
+      
     return redirect()->route('leads.index')->with('success', 'Lead deleted successfully.');
 
     }

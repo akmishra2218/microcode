@@ -11,4 +11,6 @@ class Lead extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['name', 'email', 'phone', 'status'];
+
+    protected $dates = ['deleted_at'];
 }
