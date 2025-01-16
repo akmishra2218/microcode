@@ -1,0 +1,26 @@
+/* Custom border style */
+.table-bordered {
+    border: 2px solid #dee2e6; 
+}
+
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6; 
+    padding: 15px; 
+}
+
+/* Custom margin for the table */
+.container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+.table-responsive {
+    text-align: -webkit-center;
+}
+
+a.btn.btn-warning.btn-sm {
+    margin: 25px;
+}
